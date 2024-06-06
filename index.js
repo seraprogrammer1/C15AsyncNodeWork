@@ -34,10 +34,13 @@ app.put("/api/data/:id", (req, res) => {
 })
 
 app.delete("/api/data/:id", (req, res) => {
-    const id = parseInt(req.params.id);
-    const index = mock_database.indexOf(mock_database.find(element => element.id === id))
-    delete mock_database[index];
-    res.send(`Removed: index ${index} in ${JSON.stringify(mock_database)}`)
+    console.log("waiting on conformation: 5 second wait")
+    setTimeout(() => {
+        const id = parseInt(req.params.id);
+        const index = mock_database.indexOf(mock_database.find(element => element.id === id))
+        delete mock_database[index];
+        res.send(`Removed: index ${index} in ${JSON.stringify(mock_database)}`)
+    }, 5000)
 })
 
 const port = 4000;
